@@ -1,0 +1,81 @@
+\usepackage{tcolorbox}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{fontspec}
+\setmainfont{Caladea}
+\usepackage{xcolor}
+\definecolor{programgray}{RGB}{217, 217, 217}
+\pagenumbering{gobble}
+
+% ==========================================
+% --- TEMPLATE PARAMETERS / MACROS ---
+% ==========================================
+\newcommand{\ruleline}[1]{%
+    \par\noindent\makebox[\linewidth]{%
+        % The 'height' sets the top of the line, 'depth' sets the bottom.
+        % Adjust these to move the line up or down.
+        \hspace{2ex}
+        \leaders\vbox{\hrule width 1pt height 0.55ex depth -0.45ex}\hfill%
+        \hspace{2ex}{\footnotesize \it #1}\hspace{2ex}%
+        \leaders\vbox{\hrule width 1pt height 0.55ex depth -0.45ex}\hfill%
+        \hspace{2ex}
+    }\par
+}
+% Header macros
+\newcommand{\departmenthead}{\begin{minipage}{0.9\textwidth}\centering \footnotesize \it The University of California, Santa Barbara Division of Humanities and Fine Arts in the College of Letters and Science and the UC Santa Barbara Department of Music present a \end{minipage}}
+\newcommand{\recitaltype}{Carillon Recital}
+
+\newcommand{\setperformers}[1]{\def\theperformers{#1}}
+\newcommand{\setdatetimeplace}[3]{%
+    \def\thedate{#1}%
+    \def\thetime{#2}%
+    \def\theplace{#3}%
+    % Combine them into one display command with thick dots
+    \def\thedatetimeplace{#1 \(\bullet\) #2 \(\bullet\) #3}%
+}
+
+% Program macros
+\newenvironment{programlist}{
+    \begin{enumerate}[label=\arabic*., leftmargin=*, itemsep=1em, parsep=0pt]
+        }{
+    \end{enumerate}
+}
+
+% Command for a piece: \piece{Title}{Composer}
+\newcommand{\piece}[2]{
+    {#1} \hfill {\raggedleft \mbox{#2}} \par
+}
+
+% Command for an arranger or editor
+\newcommand{\arranger}[1]{
+    \hfill \mbox{arr. #1} \par
+}
+
+\newcommand{\editor}[1]{
+    \hfill \mbox{ed. #1} \par
+}
+
+% Command for movements
+\newcommand{\movement}[1]{
+    \hspace*{2em} #1 \par
+}
+
+% Command for performer(s) of a section
+\newcommand{\sectionperformer}[1]{
+    {\centering \textbf{#1} \par}
+}
+
+% Callout box for future events or information
+\newcommand{\calloutbox}[1]{
+    \begin{center}
+        \begin{tcolorbox}[colback=programgray, colframe=black, sharp corners, boxrule=0.5pt, width=.85\textwidth, left=5pt, right=5pt, top=5pt, bottom=5pt]
+            #1
+        \end{tcolorbox}
+    \end{center}
+}
+
+\newcommand{\piecetitle}[1]{
+    \textbf{\textit{#1}}%
+}
+
+% --- END TEMPLATE MACROS ---
